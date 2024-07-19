@@ -6,6 +6,7 @@ export const commonStyles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     backgroundColor: '#f8f9fa',
+    width: 500,
   },
   title: {
     fontSize: 28,

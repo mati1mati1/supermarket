@@ -82,8 +82,3 @@ export const getOrdersByBuyerId = async (buyerId: string): Promise<BuyerOrder[]>
   const queryObject = getOrdersByBuyerIdQuery(buyerId);
   return await executeSqlQuery<BuyerOrder>(queryObject);
 };
-
-export const getSupermarkets = async (): Promise<Supermarket[]> => {
-  const queryObject = getSupermarketsQuery();
-  return await executeSqlQuery<Supermarket>(queryObject);
-};

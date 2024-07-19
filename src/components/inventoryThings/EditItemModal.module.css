@@ -1,0 +1,19 @@
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    border: 1px solid #888;
+    border-radius: 10px;
+    z-index: 99999;
+    background-color: white;
+    width: 175%;
+    height: 175%;
+}
+
+.edit-item-modal .modal-content {
+    /* Add your styles for the modal content here */
+}
+
+.edit-item-modal .modal-content .primary-color {
+    color: blue;
+}

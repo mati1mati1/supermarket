@@ -23,7 +23,7 @@ export type RootStackParamList = {
   ShoppingList: { cartId: string };
   EditList: { cartId: string | null };
   InventoryManagement: undefined;
-  OrderManagement: undefined;
+  Orders: undefined;
   PurchaseHistory: undefined;
   ShoppingCartList: undefined;
   SupermarketMap: { listId?: string | null };
@@ -32,6 +32,7 @@ export type RootStackParamList = {
   SelectList: undefined;
   SelectSupermarket: { listId: string | null };
   CustomerMapViewer: { supermarketId: string; listId: string | null };
+  OrderManagement: undefined; 
 };
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -40,7 +41,7 @@ const iconMap: { [key: string]: keyof typeof FontAwesome.glyphMap } = {
   BarcodeScanner: 'barcode',
   ShoppingList: 'shopping-cart',
   InventoryManagement: 'cubes',
-  OrderManagement: 'clipboard',
+  Orders: 'clipboard',
   PurchaseHistory: 'history',
   ShoppingCartList: 'list',
   SupermarketMap: 'map',
