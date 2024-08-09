@@ -86,7 +86,7 @@ export default function InventoryManagementScreen() {
       Barcode: form.Barcode,
       SupermarketID: supermarketID
     };
-    const response = await addShopInventory(newItem);
+    const response = await addShopInventory(token || '', newItem);
     newItem.InventoryID = response[0];
     setInventory([...inventory, newItem]);
     setForm({ ItemName: '', Quantity: '', Price: '', Discount: '', Location: '', Barcode: '' });
@@ -106,7 +106,7 @@ export default function InventoryManagementScreen() {
         Barcode: form.Barcode
       };
 
-      await updateShopInventory(updatedItem);
+      await updateShopInventory(token || '', updatedItem);
 
       const updatedInventory = inventory.map(item =>
         item.InventoryID === currentItem.InventoryID
@@ -142,7 +142,7 @@ export default function InventoryManagementScreen() {
 
   const confirmDeleteItem = async () => {
     if (itemToDelete) {
-      await deleteShopInventory(itemToDelete.InventoryID);
+      await deleteShopInventory(token || '',itemToDelete.InventoryID);
       setInventory(inventory.filter(i => i.InventoryID !== itemToDelete.InventoryID));
       setDeleteModalVisible(false);
       setItemToDelete(null);

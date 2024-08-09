@@ -26,12 +26,12 @@ export default function LoginScreen() {
     console.log("handleLogin called with:", username, password); // Debugging
     try {
       const response = await onLogin!(username, password);
-      debugger
+      debugger;
       if (response.success) {
         if (response.role === Role.Seller) {
             router.replace('/(manager)/inventory');
           }
-        else if (response.role === Role.Customer) {
+        else if (response.role === Role.Buyer) {
           router.replace('/(customer)/purchaseHistory');
         }
         else{

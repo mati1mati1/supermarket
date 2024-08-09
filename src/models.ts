@@ -10,7 +10,6 @@ export interface User {
 export enum Role{
   Buyer = "Buyer",
   Seller = "Seller",
-  Customer = "Customer"
 }
 export interface BuyerOrder {
   OrderID: string;

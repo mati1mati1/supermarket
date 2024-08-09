@@ -169,7 +169,7 @@ const ManagerMapEditor: React.FC = () => {
 
   const saveMapToDB = async () => {
     const mapData = { sections, entrance, mapWidth, mapHeight };
-    await updateMap(supermarket.SupermarketID, JSON.stringify(mapData));
+    await updateMap(token || '', supermarket.SupermarketID, JSON.stringify(mapData));
   };
 
   if (isLoading) {

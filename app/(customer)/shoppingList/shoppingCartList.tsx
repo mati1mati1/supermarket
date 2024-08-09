@@ -23,6 +23,7 @@ const ShoppingCartListScreen = () => {
         return;
       }
       try {
+        debugger
         const storedShoppingLists = await getShoppingListsByBuyerId(token);
         if (storedShoppingLists) {
           setShoppingLists(storedShoppingLists);

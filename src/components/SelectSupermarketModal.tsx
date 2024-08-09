@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet, Modal, Pressable, ActivityIndicator, 
 import { getSupermarketByBarcode, getSupermarkets } from 'src/api/api';
 import { Supermarket } from 'src/models';
 import ScanItem from './Scanner';
+import { useAuth } from 'src/context/AuthContext';
 
 interface SelectSupermarketModalProps {
   closeModal: (selectedSupermarket: Supermarket | null) => void;
@@ -15,11 +16,12 @@ const SelectSupermarketModal: React.FC<SelectSupermarketModalProps> = ({ closeMo
   const [selectedSupermarket, setSelectedSupermarket] = useState<Supermarket | null>(null);
   const [hasFetched, setHasFetched] = useState(false);
   const [isScannedDataOpen, setScannedDataModalOpen] = useState(false);
-
+  const { authState } = useAuth();
+  const token = authState.token;
   const fetchSupermarkets = async () => {
     setIsLoading(true);
     try {
-      const fetchedSupermarkets = await getSupermarkets();
+      const fetchedSupermarkets = await getSupermarkets(token || '');
       if (fetchedSupermarkets) {
         setSupermarkets(fetchedSupermarkets);
       }
@@ -43,7 +45,7 @@ const SelectSupermarketModal: React.FC<SelectSupermarketModalProps> = ({ closeMo
 
   const handleScannedBarcode = async (data: string) => {
     try{
-      let response = await getSupermarketByBarcode(data);
+      let response = await getSupermarketByBarcode(token || '' , data);
       if(response.length > 0){
         setSelectedSupermarket(response[0]);
         setScannedDataModalOpen(false);
